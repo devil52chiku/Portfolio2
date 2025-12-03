@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
+import { z } from 'zod';
 
 const contactInfo = [
   {
@@ -27,27 +29,99 @@ const contactInfo = [
   },
 ];
 
+// Validation schema
+const contactSchema = z.object({
+  name: z.string().trim().min(1, 'Name is required').max(100, 'Name must be less than 100 characters'),
+  email: z.string().trim().email('Please enter a valid email').max(255, 'Email must be less than 255 characters'),
+  message: z.string().trim().min(1, 'Message is required').max(2000, 'Message must be less than 2000 characters'),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
+
 const ContactSection: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [errors, setErrors] = useState<Partial<ContactFormData>>({});
   const { toast } = useToast();
+
+  const validateField = (field: keyof ContactFormData, value: string) => {
+    try {
+      contactSchema.shape[field].parse(value);
+      setErrors(prev => ({ ...prev, [field]: undefined }));
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        setErrors(prev => ({ ...prev, [field]: error.errors[0].message }));
+      }
+      return false;
+    }
+  };
+
+  const handleChange = (field: keyof ContactFormData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    if (errors[field]) {
+      validateField(field, value);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErrors({});
+
+    // Validate all fields
+    const result = contactSchema.safeParse(formData);
+    if (!result.success) {
+      const fieldErrors: Partial<ContactFormData> = {};
+      result.error.errors.forEach(err => {
+        const field = err.path[0] as keyof ContactFormData;
+        fieldErrors[field] = err.message;
+      });
+      setErrors(fieldErrors);
+      toast({
+        title: 'Validation Error',
+        description: 'Please check the form for errors.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert({
+          name: result.data.name,
+          email: result.data.email,
+          message: result.data.message,
+        });
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
+      if (error) throw error;
 
-    toast({
-      title: 'Message sent!',
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
+      setIsSuccess(true);
+      setFormData({ name: '', email: '', message: '' });
 
-    setTimeout(() => setIsSuccess(false), 3000);
+      toast({
+        title: 'Message sent!',
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
+
+      setTimeout(() => setIsSuccess(false), 3000);
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to send message. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -126,9 +200,15 @@ const ContactSection: React.FC = () => {
                 <Input
                   id="name"
                   placeholder="Your name"
-                  required
-                  className="bg-background/50"
+                  value={formData.name}
+                  onChange={(e) => handleChange('name', e.target.value)}
+                  onBlur={(e) => validateField('name', e.target.value)}
+                  className={cn("bg-background/50", errors.name && "border-destructive")}
+                  disabled={isSubmitting}
                 />
+                {errors.name && (
+                  <p className="text-sm text-destructive mt-1">{errors.name}</p>
+                )}
               </div>
               <div>
                 <label htmlFor="email" className="text-sm font-medium mb-2 block">
@@ -138,9 +218,15 @@ const ContactSection: React.FC = () => {
                   id="email"
                   type="email"
                   placeholder="your@email.com"
-                  required
-                  className="bg-background/50"
+                  value={formData.email}
+                  onChange={(e) => handleChange('email', e.target.value)}
+                  onBlur={(e) => validateField('email', e.target.value)}
+                  className={cn("bg-background/50", errors.email && "border-destructive")}
+                  disabled={isSubmitting}
                 />
+                {errors.email && (
+                  <p className="text-sm text-destructive mt-1">{errors.email}</p>
+                )}
               </div>
               <div>
                 <label htmlFor="message" className="text-sm font-medium mb-2 block">
@@ -150,9 +236,15 @@ const ContactSection: React.FC = () => {
                   id="message"
                   placeholder="Tell me about your project..."
                   rows={5}
-                  required
-                  className="bg-background/50 resize-none"
+                  value={formData.message}
+                  onChange={(e) => handleChange('message', e.target.value)}
+                  onBlur={(e) => validateField('message', e.target.value)}
+                  className={cn("bg-background/50 resize-none", errors.message && "border-destructive")}
+                  disabled={isSubmitting}
                 />
+                {errors.message && (
+                  <p className="text-sm text-destructive mt-1">{errors.message}</p>
+                )}
               </div>
             </div>
 
