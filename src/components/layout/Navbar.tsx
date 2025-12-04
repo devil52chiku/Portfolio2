@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Menu, X, Book, Cloud } from 'lucide-react';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -58,8 +60,19 @@ const Navbar: React.FC = () => {
           ))}
         </div>
 
-        {/* Theme Toggle & Mobile Menu Button */}
-        <div className="flex items-center gap-4">
+        {/* Theme Toggle, Library & Mobile Menu Button */}
+        <div className="flex items-center gap-2">
+          <Link to="/library">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="hidden md:flex items-center gap-2 glass border border-border/50 hover:border-accent/50 hover:bg-secondary/50"
+            >
+              <Book className="w-4 h-4 text-accent" />
+              <span className="text-sm">Library</span>
+            </Button>
+          </Link>
+          
           <ThemeToggle />
           
           <button
@@ -90,6 +103,14 @@ const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
+          <Link
+            to="/library"
+            className="text-muted-foreground hover:text-foreground transition-colors py-2 border-b border-border/50 flex items-center gap-2"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <Book className="w-4 h-4 text-accent" />
+            Library
+          </Link>
         </div>
       </div>
     </nav>

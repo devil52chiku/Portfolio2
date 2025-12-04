@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Users, Clock, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ExternalLink, Github, Users, Clock, TrendingUp, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
@@ -189,13 +190,16 @@ const ProjectsSection: React.FC = () => {
 
         {/* View all button */}
         <div className="text-center mt-12">
-          <Button
-            variant="outline"
-            size="lg"
-            className="gradient-border bg-background hover:bg-secondary/50"
-          >
-            View All Projects
-          </Button>
+          <Link to="/projects">
+            <Button
+              variant="outline"
+              size="lg"
+              className="gradient-border bg-background hover:bg-secondary/50 group"
+            >
+              View All Projects
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
