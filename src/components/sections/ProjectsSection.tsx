@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ExternalLink, Github, Users, Clock, TrendingUp, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 const projects = [
   {
@@ -168,39 +169,45 @@ const ProjectsSection: React.FC = () => {
     <section id="projects" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <span className="text-accent text-sm font-medium uppercase tracking-wider">
-            My Work
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold mt-4">
-            Featured <span className="gradient-text">Projects</span>
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            A selection of projects that showcase my skills and passion for building
-            exceptional digital experiences.
-          </p>
-        </div>
+        <ScrollReveal variant="fade-up">
+          <div className="text-center mb-16">
+            <span className="text-accent text-sm font-medium uppercase tracking-wider">
+              My Work
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold mt-4">
+              Featured <span className="gradient-text">Projects</span>
+            </h2>
+            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+              A selection of projects that showcase my skills and passion for building
+              exceptional digital experiences.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Projects grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <ScrollReveal key={project.id} variant="fade-up" delay={index * 150}>
+              <ProjectCard project={project} index={index} />
+            </ScrollReveal>
           ))}
         </div>
 
         {/* View all button */}
-        <div className="text-center mt-12">
-          <Link to="/projects">
-            <Button
-              variant="outline"
-              size="lg"
-              className="gradient-border bg-background hover:bg-secondary/50 group"
-            >
-              View All Projects
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
-        </div>
+        <ScrollReveal variant="zoom-in" delay={400}>
+          <div className="text-center mt-12">
+            <Link to="/projects">
+              <Button
+                variant="outline"
+                size="lg"
+                className="gradient-border bg-background hover:bg-secondary/50 group"
+              >
+                View All Projects
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
