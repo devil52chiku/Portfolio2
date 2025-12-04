@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { z } from 'zod';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 const contactInfo = [
   {
@@ -131,67 +132,73 @@ const ContactSection: React.FC = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <span className="text-accent text-sm font-medium uppercase tracking-wider">
-            Get In Touch
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold mt-4">
-            Let's <span className="gradient-text">Connect</span>
-          </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Have a project in mind or just want to say hello? I'd love to hear from you.
-          </p>
-        </div>
+        <ScrollReveal variant="fade-up">
+          <div className="text-center mb-16">
+            <span className="text-accent text-sm font-medium uppercase tracking-wider">
+              Get In Touch
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold mt-4">
+              Let's <span className="gradient-text">Connect</span>
+            </h2>
+            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+              Have a project in mind or just want to say hello? I'd love to hear from you.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Contact info */}
-          <div className="space-y-6">
-            {/* Availability badge */}
-            <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
-              </span>
-              <span className="text-sm">Currently available for freelance work</span>
-            </div>
+          <ScrollReveal variant="fade-right" delay={100}>
+            <div className="space-y-6">
+              {/* Availability badge */}
+              <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 hover:scale-105 transition-transform">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
+                </span>
+                <span className="text-sm">Currently available for freelance work</span>
+              </div>
 
-            <h3 className="text-2xl font-bold">
-              Let's build something amazing together
-            </h3>
-            <p className="text-muted-foreground">
-              I'm always excited to work on new projects and collaborate with 
-              creative minds. Whether you have a specific project in mind or 
-              just want to explore possibilities, feel free to reach out.
-            </p>
+              <h3 className="text-2xl font-bold">
+                Let's build something amazing together
+              </h3>
+              <p className="text-muted-foreground">
+                I'm always excited to work on new projects and collaborate with 
+                creative minds. Whether you have a specific project in mind or 
+                just want to explore possibilities, feel free to reach out.
+              </p>
 
-            {/* Contact cards */}
-            <div className="space-y-4 pt-4">
-              {contactInfo.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className={cn(
-                    "group flex items-center gap-4 p-4 glass rounded-xl",
-                    "transition-all duration-300",
-                    "hover:-translate-x-1 hover:shadow-lg hover:border-accent/30 border border-transparent"
-                  )}
-                >
-                  <div className="p-3 rounded-lg bg-gradient-to-br from-accent/20 to-primary/20 group-hover:from-accent/30 group-hover:to-primary/30 transition-colors">
-                    <item.icon className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">{item.label}</p>
-                    <p className="font-medium group-hover:text-accent transition-colors">
-                      {item.value}
-                    </p>
-                  </div>
-                </a>
-              ))}
+              {/* Contact cards */}
+              <div className="space-y-4 pt-4">
+                {contactInfo.map((item, index) => (
+                  <ScrollReveal key={item.label} variant="fade-up" delay={200 + index * 100}>
+                    <a
+                      href={item.href}
+                      className={cn(
+                        "group flex items-center gap-4 p-4 glass rounded-xl",
+                        "transition-all duration-300",
+                        "hover:-translate-x-1 hover:shadow-lg hover:border-accent/30 border border-transparent"
+                      )}
+                    >
+                      <div className="p-3 rounded-lg bg-gradient-to-br from-accent/20 to-primary/20 group-hover:from-accent/30 group-hover:to-primary/30 transition-colors group-hover:rotate-6">
+                        <item.icon className="w-5 h-5 text-accent" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">{item.label}</p>
+                        <p className="font-medium group-hover:text-accent transition-colors">
+                          {item.value}
+                        </p>
+                      </div>
+                    </a>
+                  </ScrollReveal>
+                ))}
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Contact form */}
-          <form onSubmit={handleSubmit} className="glass p-8 rounded-xl space-y-6">
+          <ScrollReveal variant="fade-left" delay={200}>
+            <form onSubmit={handleSubmit} className="glass p-8 rounded-xl space-y-6 hover:shadow-xl transition-shadow duration-500">
             <div className="space-y-4">
               <div>
                 <label htmlFor="name" className="text-sm font-medium mb-2 block">
@@ -280,6 +287,7 @@ const ContactSection: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary-foreground/10 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-1000" />
             </Button>
           </form>
+          </ScrollReveal>
         </div>
       </div>
     </section>

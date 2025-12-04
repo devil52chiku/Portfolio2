@@ -8,6 +8,7 @@ import SkillsSection from '@/components/sections/SkillsSection';
 import ProjectsSection from '@/components/sections/ProjectsSection';
 import ContactSection from '@/components/sections/ContactSection';
 import FooterSection from '@/components/sections/FooterSection';
+import ParticleBackground from '@/components/three/ParticleBackground';
 
 const CursorGlow: React.FC = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -51,6 +52,9 @@ const Portfolio: React.FC = () => {
   return (
     <ThemeProvider>
       <div className="relative min-h-screen bg-background overflow-hidden">
+        {/* Interactive particle background */}
+        <ParticleBackground />
+        
         {/* Theme transition overlay */}
         <ThemeTransition />
 
@@ -61,7 +65,7 @@ const Portfolio: React.FC = () => {
         <Navbar />
 
         {/* Main content */}
-        <main>
+        <main className="relative z-10">
           <HeroSection />
           <AboutSection />
           <SkillsSection />
