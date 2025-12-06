@@ -5,19 +5,11 @@ import GeometricAvatar from '@/components/three/GeometricAvatar';
 import FloatingShapes from '@/components/three/FloatingShapes';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-
-const roles = [
-  'Full-Stack Developer',
-  'UI/UX Designer',
-  'Problem Solver',
-  'Creative Coder',
-];
-
+const roles = ['Full-Stack Developer', 'UI/UX Designer', 'Problem Solver', 'Creative Coder'];
 const HeroSection: React.FC = () => {
   const [currentRole, setCurrentRole] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-
   useEffect(() => {
     const role = roles[currentRole];
     const timeout = setTimeout(() => {
@@ -32,19 +24,13 @@ const HeroSection: React.FC = () => {
           setDisplayedText(displayedText.slice(0, -1));
         } else {
           setIsDeleting(false);
-          setCurrentRole((prev) => (prev + 1) % roles.length);
+          setCurrentRole(prev => (prev + 1) % roles.length);
         }
       }
     }, isDeleting ? 50 : 100);
-
     return () => clearTimeout(timeout);
   }, [displayedText, isDeleting, currentRole]);
-
-  return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
-    >
+  return <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <FloatingShapes />
 
       <div className="container mx-auto px-4 relative z-10">
@@ -73,10 +59,7 @@ const HeroSection: React.FC = () => {
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight relative z-10">
               <span className="block text-foreground">Hi, I'm</span>
-              <span 
-                className="gradient-text glitch-hover inline-block" 
-                data-text="Alex Chen"
-              >
+              <span data-text="Alex Chen" className="gradient-text glitch-hover inline-block text-6xl font-mono">
                 Alex Chen
               </span>
             </h1>
@@ -97,52 +80,42 @@ const HeroSection: React.FC = () => {
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <Link to="/projects">
-                <Button
-                  size="lg"
-                  className="relative overflow-hidden group bg-gradient-to-r from-accent via-primary to-pink-500 hover:opacity-90 text-primary-foreground btn-glitch"
-                >
+                <Button size="lg" className="relative overflow-hidden group bg-gradient-to-r from-accent via-primary to-pink-500 hover:opacity-90 text-primary-foreground btn-glitch">
                   <span className="relative z-10">View Projects</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-primary via-pink-500 to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </Button>
               </Link>
               
-              <Button
-                variant="outline"
-                size="lg"
-                className="gradient-border bg-background hover:bg-secondary/50 btn-glitch"
-              >
+              <Button variant="outline" size="lg" className="gradient-border bg-background hover:bg-secondary/50 btn-glitch">
                 Download CV
               </Button>
             </div>
 
             {/* Social links */}
             <div className="flex gap-4 justify-center lg:justify-start pt-4">
-              {[
-                { icon: Github, href: '#', label: 'GitHub' },
-                { icon: Linkedin, href: '#', label: 'LinkedIn' },
-                { icon: Mail, href: '#contact', label: 'Email' },
-              ].map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  className={cn(
-                    "relative w-12 h-12 rounded-full glass",
-                    "flex items-center justify-center",
-                    "group overflow-hidden",
-                    "hover:scale-110 transition-transform duration-300"
-                  )}
-                  aria-label={label}
-                >
+              {[{
+              icon: Github,
+              href: '#',
+              label: 'GitHub'
+            }, {
+              icon: Linkedin,
+              href: '#',
+              label: 'LinkedIn'
+            }, {
+              icon: Mail,
+              href: '#contact',
+              label: 'Email'
+            }].map(({
+              icon: Icon,
+              href,
+              label
+            }) => <a key={label} href={href} className={cn("relative w-12 h-12 rounded-full glass", "flex items-center justify-center", "group overflow-hidden", "hover:scale-110 transition-transform duration-300")} aria-label={label}>
                   <Icon className="w-5 h-5 text-foreground group-hover:text-accent transition-colors" />
-                  <div 
-                    className="absolute inset-0 border-2 border-transparent rounded-full group-hover:border-accent/50 animate-rotate-border"
-                    style={{ 
-                      borderImage: 'linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)), transparent) 1',
-                      opacity: 0,
-                    }}
-                  />
-                </a>
-              ))}
+                  <div className="absolute inset-0 border-2 border-transparent rounded-full group-hover:border-accent/50 animate-rotate-border" style={{
+                borderImage: 'linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)), transparent) 1',
+                opacity: 0
+              }} />
+                </a>)}
             </div>
           </div>
 
@@ -154,18 +127,11 @@ const HeroSection: React.FC = () => {
 
         {/* Floating tech icons */}
         <div className="hidden lg:flex absolute bottom-32 left-10 gap-8">
-          {[Terminal, Code2, Braces].map((Icon, i) => (
-            <div
-              key={i}
-              className={cn(
-                "p-4 glass rounded-xl animate-float",
-                i === 1 && "animate-float-delayed"
-              )}
-              style={{ animationDelay: `${i * 0.5}s` }}
-            >
+          {[Terminal, Code2, Braces].map((Icon, i) => <div key={i} className={cn("p-4 glass rounded-xl animate-float", i === 1 && "animate-float-delayed")} style={{
+          animationDelay: `${i * 0.5}s`
+        }}>
               <Icon className="w-8 h-8 text-accent" />
-            </div>
-          ))}
+            </div>)}
         </div>
 
         {/* Scroll indicator */}
@@ -174,8 +140,6 @@ const HeroSection: React.FC = () => {
           <ChevronDown className="w-6 h-6 text-accent animate-bounce-slow" />
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
