@@ -21,6 +21,7 @@ interface ScrollRevealProps {
   duration?: number;
   className?: string;
   threshold?: number;
+  triggerOnce?: boolean;
 }
 
 const animations: Record<AnimationVariant, { initial: string; animate: string }> = {
@@ -73,8 +74,9 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   duration = 700,
   className,
   threshold = 0.1,
+  triggerOnce = false,
 }) => {
-  const { ref, isVisible } = useScrollAnimation({ threshold });
+  const { ref, isVisible } = useScrollAnimation({ threshold, triggerOnce });
   const animation = animations[variant];
 
   return (

@@ -29,11 +29,11 @@ const AboutSection: React.FC = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
-        <ScrollReveal variant="fade-up">
+        <ScrollReveal variant="fade-up" triggerOnce={false}>
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 text-accent mb-4">
               <Sparkles className="w-5 h-5" />
-              <span className="text-sm font-medium uppercase tracking-wider">About Me</span>
+              <span className="text-sm font-mono uppercase tracking-wider">{`> about.init()`}</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
               Passionate about creating
@@ -45,7 +45,7 @@ const AboutSection: React.FC = () => {
         {/* Content grid */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Bio */}
-          <ScrollReveal variant="fade-right" delay={100}>
+          <ScrollReveal variant="fade-right" delay={100} triggerOnce={false}>
             <div className="space-y-6">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 With over 5 years of experience in web development, I specialize in building 
@@ -67,7 +67,7 @@ const AboutSection: React.FC = () => {
                   { number: '50+', label: 'Projects Completed' },
                   { number: '30+', label: 'Happy Clients' },
                 ].map((stat, index) => (
-                  <ScrollReveal key={stat.label} variant="zoom-in" delay={200 + index * 100}>
+                  <ScrollReveal key={stat.label} variant="zoom-in" delay={200 + index * 100} triggerOnce={false}>
                     <div className="text-center">
                       <div className="text-3xl md:text-4xl font-bold gradient-text">{stat.number}</div>
                       <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
@@ -81,7 +81,7 @@ const AboutSection: React.FC = () => {
           {/* Highlight cards */}
           <div className="space-y-4">
             {highlights.map((item, index) => (
-              <ScrollReveal key={item.title} variant="fade-left" delay={100 + index * 150}>
+              <ScrollReveal key={item.title} variant="fade-left" delay={100 + index * 150} triggerOnce={false}>
                 <div
                   className={cn(
                     "group glass p-6 rounded-xl",

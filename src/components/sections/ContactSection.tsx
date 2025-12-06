@@ -132,23 +132,23 @@ const ContactSection: React.FC = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
-        <ScrollReveal variant="fade-up">
+        <ScrollReveal variant="fade-up" triggerOnce={false}>
           <div className="text-center mb-16">
-            <span className="text-accent text-sm font-medium uppercase tracking-wider">
-              Get In Touch
+            <span className="text-accent text-sm font-mono uppercase tracking-wider">
+              {`> contact.connect()`}
             </span>
             <h2 className="text-3xl md:text-5xl font-bold mt-4">
               Let's <span className="gradient-text">Connect</span>
             </h2>
-            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-              Have a project in mind or just want to say hello? I'd love to hear from you.
+            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto font-mono text-sm">
+              {`// Have a project in mind? Let's talk.`}
             </p>
           </div>
         </ScrollReveal>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Contact info */}
-          <ScrollReveal variant="fade-right" delay={100}>
+          <ScrollReveal variant="fade-right" delay={100} triggerOnce={false}>
             <div className="space-y-6">
               {/* Availability badge */}
               <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6 hover:scale-105 transition-transform">
@@ -171,7 +171,7 @@ const ContactSection: React.FC = () => {
               {/* Contact cards */}
               <div className="space-y-4 pt-4">
                 {contactInfo.map((item, index) => (
-                  <ScrollReveal key={item.label} variant="fade-up" delay={200 + index * 100}>
+                  <ScrollReveal key={item.label} variant="fade-up" delay={200 + index * 100} triggerOnce={false}>
                     <a
                       href={item.href}
                       className={cn(
@@ -197,7 +197,7 @@ const ContactSection: React.FC = () => {
           </ScrollReveal>
 
           {/* Contact form */}
-          <ScrollReveal variant="fade-left" delay={200}>
+          <ScrollReveal variant="fade-left" delay={200} triggerOnce={false}>
             <form onSubmit={handleSubmit} className="glass p-8 rounded-xl space-y-6 hover:shadow-xl transition-shadow duration-500">
             <div className="space-y-4">
               <div>

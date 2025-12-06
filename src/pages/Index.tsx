@@ -8,6 +8,7 @@ import SkillsSection from '@/components/sections/SkillsSection';
 import ProjectsSection from '@/components/sections/ProjectsSection';
 import ContactSection from '@/components/sections/ContactSection';
 import FooterSection from '@/components/sections/FooterSection';
+import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import ParticleBackground from '@/components/three/ParticleBackground';
 
 const CursorGlow: React.FC = () => {
@@ -48,10 +49,38 @@ const CursorGlow: React.FC = () => {
   );
 };
 
+// Matrix-style falling code effect
+const MatrixRain: React.FC = () => {
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-[0.03]">
+      {Array.from({ length: 20 }).map((_, i) => (
+        <div
+          key={i}
+          className="absolute top-0 text-primary font-mono text-xs animate-matrix-fall"
+          style={{
+            left: `${i * 5}%`,
+            animationDelay: `${Math.random() * 5}s`,
+            animationDuration: `${10 + Math.random() * 10}s`
+          }}
+        >
+          {Array.from({ length: 30 }).map((_, j) => (
+            <div key={j} className="opacity-80">
+              {String.fromCharCode(0x30A0 + Math.random() * 96)}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+
 const Portfolio: React.FC = () => {
   return (
     <ThemeProvider>
       <div className="relative min-h-screen bg-background overflow-hidden">
+        {/* Matrix rain background */}
+        <MatrixRain />
+        
         {/* Interactive particle background */}
         <ParticleBackground />
         
@@ -60,6 +89,9 @@ const Portfolio: React.FC = () => {
 
         {/* Cursor glow effect */}
         <CursorGlow />
+
+        {/* Scan line effect */}
+        <div className="fixed inset-0 pointer-events-none z-50 bg-scanlines opacity-[0.02]" />
 
         {/* Navigation */}
         <Navbar />
@@ -70,6 +102,7 @@ const Portfolio: React.FC = () => {
           <AboutSection />
           <SkillsSection />
           <ProjectsSection />
+          <TestimonialsSection />
           <ContactSection />
         </main>
 

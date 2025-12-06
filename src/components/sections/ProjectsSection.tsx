@@ -169,17 +169,16 @@ const ProjectsSection: React.FC = () => {
     <section id="projects" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
-        <ScrollReveal variant="fade-up">
+        <ScrollReveal variant="fade-up" triggerOnce={false}>
           <div className="text-center mb-16">
-            <span className="text-accent text-sm font-medium uppercase tracking-wider">
-              My Work
+            <span className="text-accent text-sm font-mono uppercase tracking-wider">
+              {`> projects.fetch()`}
             </span>
             <h2 className="text-3xl md:text-5xl font-bold mt-4">
               Featured <span className="gradient-text">Projects</span>
             </h2>
-            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-              A selection of projects that showcase my skills and passion for building
-              exceptional digital experiences.
+            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto font-mono text-sm">
+              {`// A selection of projects that showcase my skills`}
             </p>
           </div>
         </ScrollReveal>
@@ -187,14 +186,14 @@ const ProjectsSection: React.FC = () => {
         {/* Projects grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <ScrollReveal key={project.id} variant="fade-up" delay={index * 150}>
+            <ScrollReveal key={project.id} variant="fade-up" delay={index * 150} triggerOnce={false}>
               <ProjectCard project={project} index={index} />
             </ScrollReveal>
           ))}
         </div>
 
         {/* View all button */}
-        <ScrollReveal variant="zoom-in" delay={400}>
+        <ScrollReveal variant="zoom-in" delay={400} triggerOnce={false}>
           <div className="text-center mt-12">
             <Link to="/projects">
               <Button

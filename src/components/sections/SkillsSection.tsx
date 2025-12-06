@@ -61,10 +61,10 @@ const SkillsSection: React.FC = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section header */}
-        <ScrollReveal variant="fade-up">
+        <ScrollReveal variant="fade-up" triggerOnce={false}>
           <div className="text-center mb-16">
-            <span className="text-accent text-sm font-medium uppercase tracking-wider">
-              My Expertise
+            <span className="text-accent text-sm font-mono uppercase tracking-wider">
+              {`> skills.load()`}
             </span>
             <h2 className="text-3xl md:text-5xl font-bold mt-4">
               Skills & <span className="gradient-text">Technologies</span>
@@ -74,14 +74,14 @@ const SkillsSection: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Skills orbit visualization */}
-          <ScrollReveal variant="zoom-in" delay={200}>
+          <ScrollReveal variant="zoom-in" delay={200} triggerOnce={false}>
             <div className="flex justify-center order-2 lg:order-1">
               <SkillsOrbit />
             </div>
           </ScrollReveal>
 
           {/* Skills cards */}
-          <ScrollReveal variant="fade-left" delay={100}>
+          <ScrollReveal variant="fade-left" delay={100} triggerOnce={false}>
             <div className="space-y-6 order-1 lg:order-2">
               {/* Category tabs */}
               <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
