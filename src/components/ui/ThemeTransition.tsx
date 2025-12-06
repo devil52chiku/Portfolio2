@@ -1,25 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { cn } from '@/lib/utils';
 
 const ThemeTransition: React.FC = () => {
   const { isDark, isTransitioning } = useTheme();
+  const [transitioningToDark, setTransitioningToDark] = useState<boolean | null>(null);
 
-  if (!isTransitioning) return null;
+  useEffect(() => {
+    if (isTransitioning) {
+      // When transition starts, we're going TO the opposite of current state
+      // Since isDark hasn't changed yet during the transition animation,
+      // we want to show the effect for the theme we're going TO
+      setTransitioningToDark(!isDark);
+    }
+  }, [isTransitioning, isDark]);
+
+  if (!isTransitioning || transitioningToDark === null) return null;
 
   return (
     <div className="theme-transition-overlay">
       {/* Background overlay */}
       <div 
-        className={cn(
-          "absolute inset-0 transition-opacity duration-500",
-          isDark ? "bg-background" : "bg-background"
-        )}
-        style={{ opacity: isTransitioning ? 0.3 : 0 }}
+        className="absolute inset-0 transition-opacity duration-500"
+        style={{ opacity: 0.3 }}
       />
       
       {/* Moon effect (transitioning TO dark) */}
-      {!isDark && (
+      {transitioningToDark && (
         <div className="moon-effect relative">
           {/* Moon body */}
           <div className="relative w-32 h-32">
@@ -52,7 +59,7 @@ const ThemeTransition: React.FC = () => {
       )}
 
       {/* Sun effect (transitioning TO light) */}
-      {isDark && (
+      {!transitioningToDark && (
         <div className="sun-effect relative">
           {/* Sun body */}
           <div className="relative w-32 h-32">
