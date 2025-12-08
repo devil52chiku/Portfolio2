@@ -86,9 +86,15 @@ const HeroSection: React.FC = () => {
                 </Button>
               </Link>
               
-              <Button variant="outline" size="lg" className="gradient-border bg-background hover:bg-secondary/50 btn-glitch">
-                Download CV
-              </Button>
+              <a 
+                href="https://drive.google.com/uc?export=download&id=1r-WPfzCWmEDmz8khZcsB36kTjA2BPM-O"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline" size="lg" className="gradient-border bg-background hover:bg-secondary/50 btn-glitch">
+                  Download CV
+                </Button>
+              </a>
             </div>
 
             {/* Social links */}

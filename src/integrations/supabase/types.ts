@@ -41,6 +41,24 @@ export type Database = {
         }
         Relationships: []
       }
+      portfolio_likes: {
+        Row: {
+          created_at: string
+          id: string
+          session_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          session_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          session_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

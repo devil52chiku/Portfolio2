@@ -10,7 +10,8 @@ import ContactSection from '@/components/sections/ContactSection';
 import FooterSection from '@/components/sections/FooterSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import ParticleBackground from '@/components/three/ParticleBackground';
-
+import IntroScreen from '@/components/ui/IntroScreen';
+import LikeButton from '@/components/ui/LikeButton';
 const CursorGlow: React.FC = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
@@ -75,8 +76,13 @@ const MatrixRain: React.FC = () => {
 };
 
 const Portfolio: React.FC = () => {
+  const [showIntro, setShowIntro] = useState(true);
+
   return (
     <ThemeProvider>
+      {/* Intro Screen */}
+      {showIntro && <IntroScreen onComplete={() => setShowIntro(false)} />}
+
       <div className="relative min-h-screen bg-background overflow-hidden">
         {/* Matrix rain background */}
         <MatrixRain />
@@ -108,6 +114,9 @@ const Portfolio: React.FC = () => {
 
         {/* Footer */}
         <FooterSection />
+
+        {/* Like Button */}
+        <LikeButton />
       </div>
     </ThemeProvider>
   );
