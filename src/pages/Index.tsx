@@ -78,9 +78,7 @@ const MatrixRain: React.FC = () => {
 };
 
 const Portfolio: React.FC = () => {
-  const [showIntro, setShowIntro] = useState(() => {
-    return !localStorage.getItem('portfolio_visited');
-  });
+  const [showIntro, setShowIntro] = useState(true); // Always show intro for testing
   const [isLoading, setIsLoading] = useState(true);
   const [contentReady, setContentReady] = useState(false);
 
