@@ -36,15 +36,15 @@ const IntroScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
         phase === 'fade' ? 'opacity-0' : 'opacity-100'
       }`}
     >
-      {/* Audio elements - blade scrape sounds */}
+      {/* Audio elements - cyber/glitch sounds */}
       <audio
         ref={bladeAudioRef}
-        src="https://cdn.freesound.org/previews/500/500168_10958883-lq.mp3"
+        src="https://cdn.freesound.org/previews/521/521974_7549498-lq.mp3"
         preload="auto"
       />
       <audio
         ref={swordAudioRef}
-        src="https://cdn.freesound.org/previews/240/240788_4107740-lq.mp3"
+        src="https://cdn.freesound.org/previews/387/387186_7255534-lq.mp3"
         preload="auto"
       />
 
