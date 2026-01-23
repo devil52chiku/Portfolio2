@@ -59,8 +59,8 @@ const HeroSection: React.FC = () => {
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight relative z-10">
               <span className="block text-foreground">Hi, I'm</span>
-              <span data-text="Alex Chen" className="gradient-text glitch-hover inline-block text-6xl font-mono">
-                Jyoti Ranjan Pal  
+              <span data-text="Jyoti Ranjan Pal" className="gradient-text glitch-hover inline-block text-6xl font-mono">
+                Jyoti Ranjan Pal
               </span>
             </h1>
 
@@ -87,7 +87,7 @@ const HeroSection: React.FC = () => {
               </Link>
               
               <a 
-                href="https://drive.google.com/uc?id=1r-WPfzCWmEDmz8khZcsB36kTjA2BPM-O"
+                href="https://drive.google.com/uc?export=download&id=1s6ddEczrvMn6QSeaIPKovNsRiYSyqMvi"
                 download
               >
                 <Button variant="outline" size="lg" className="gradient-border bg-background hover:bg-secondary/50 btn-glitch">
@@ -99,28 +99,26 @@ const HeroSection: React.FC = () => {
             {/* Social links */}
             <div className="flex gap-4 justify-center lg:justify-start pt-4">
               {[{
-              icon: Github,
-              href: 'https://github.com/jr777pal',
-              label: 'GitHub'
-            }, {
-              icon: Linkedin,
-              href: 'https://www.linkedin.com/in/jyoti-ranjan-pal-994821385/',
-              label: 'LinkedIn'
-            }, {
-              icon: Mail,
-              href: 'mailto:jyotiranjanpal777@gmail.com',
-              label: 'Email'
-            }].map(({
-              icon: Icon,
-              href,
-              label
-            }) => <a key={label} href={href} className={cn("relative w-12 h-12 rounded-full glass", "flex items-center justify-center", "group overflow-hidden", "hover:scale-110 transition-transform duration-300")} aria-label={label}>
+                icon: Github,
+                href: 'https://github.com/jr777pal',
+                label: 'GitHub'
+              }, {
+                icon: Linkedin,
+                href: 'https://www.linkedin.com/in/jyoti-ranjan-pal-994821385/',
+                label: 'LinkedIn'
+              }, {
+                icon: Mail,
+                href: 'mailto:jyotiranjanpal777@gmail.com',
+                label: 'Email'
+              }].map(({ icon: Icon, href, label }) => (
+                <a key={label} href={href} className={cn("relative w-12 h-12 rounded-full glass", "flex items-center justify-center", "group overflow-hidden", "hover:scale-110 transition-transform duration-300")} aria-label={label}>
                   <Icon className="w-5 h-5 text-foreground group-hover:text-accent transition-colors" />
                   <div className="absolute inset-0 border-2 border-transparent rounded-full group-hover:border-accent/50 animate-rotate-border" style={{
-                borderImage: 'linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)), transparent) 1',
-                opacity: 0
-              }} />
-                </a>)}
+                    borderImage: 'linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)), transparent) 1',
+                    opacity: 0
+                  }} />
+                </a>
+              ))}
             </div>
           </div>
 

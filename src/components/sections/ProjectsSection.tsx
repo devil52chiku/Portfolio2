@@ -8,36 +8,36 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 const projects = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
+    title: 'PlantWorld',
     category: 'Full Stack',
     description: 'A modern e-commerce solution with real-time inventory, payment processing, and admin dashboard.',
     longDescription: 'Built with Next.js and Stripe integration, featuring real-time inventory management, secure checkout, and comprehensive analytics dashboard.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop',
-    tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
+    image: 'plantworld.png',
+    tags: ['React', 'Node.js', 'PostgreSQL', 'Three.js'],
     stats: { users: '10K+', uptime: '99.9%', revenue: '$500K' },
     demoUrl: '#',
     githubUrl: '#',
   },
   {
     id: 2,
-    title: 'AI Task Manager',
-    category: 'SaaS',
-    description: 'Smart task management with AI-powered prioritization and natural language processing.',
-    longDescription: 'Leveraging OpenAI GPT-4 for intelligent task categorization, deadline suggestions, and automated workflow optimization.',
-    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&auto=format&fit=crop',
-    tags: ['TypeScript', 'OpenAI', 'Redis', 'Docker'],
+    title: 'PetNest',
+    category: 'Full Stack',
+    description: 'A pet buying and adoption platform with AI-powered recommendations and seamless user experience.',
+    longDescription: 'Your trusted home for finding, adopting, and caring for happy, healthy pets.Connecting loving families with pets and everything they need to thrive.',
+    image: '/petnest.png',
+    tags: ['TypeScript', 'Node.js', 'PostgreSQL', 'Three.js'],
     stats: { users: '5K+', uptime: '99.5%', tasks: '1M+' },
     demoUrl: '#',
     githubUrl: '#',
   },
   {
     id: 3,
-    title: 'Real-time Analytics',
-    category: 'Dashboard',
+    title: 'Asus Service Center',
+    category: 'UI/UX',
     description: 'Live data visualization dashboard with customizable widgets and real-time updates.',
     longDescription: 'WebSocket-powered dashboard delivering sub-second latency data visualization with interactive charts and exportable reports.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop',
-    tags: ['React', 'D3.js', 'WebSocket', 'AWS'],
+    image: '/asus.png',
+    tags: ['React', 'Three.js', 'Tailwind CSS', 'Vite'],
     stats: { users: '2K+', uptime: '99.8%', dataPoints: '50M' },
     demoUrl: '#',
     githubUrl: '#',
@@ -49,22 +49,65 @@ const ProjectCard: React.FC<{
   index: number;
 }> = ({ project, index }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isFlipped) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left - rect.width / 2) / 15;
+    const y = (e.clientY - rect.top - rect.height / 2) / 15;
+    setMousePos({ x, y });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setMousePos({ x: 0, y: 0 });
+  };
 
   return (
     <div
       className="perspective-1000 h-[420px] cursor-pointer group"
       onClick={() => setIsFlipped(!isFlipped)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      onMouseMove={handleMouseMove}
       style={{ animationDelay: `${index * 0.1}s` }}
     >
+      {/* 3D Glow effect */}
       <div
         className={cn(
-          "relative w-full h-full transition-transform duration-700 preserve-3d",
+          "absolute -inset-2 bg-gradient-to-r from-accent via-primary to-pink-500 rounded-2xl blur-xl transition-opacity duration-500 -z-10",
+          isHovered && !isFlipped ? "opacity-40" : "opacity-0"
+        )}
+      />
+      <div
+        className={cn(
+          "relative w-full h-full transition-all duration-300 preserve-3d",
           isFlipped && "rotate-y-180"
         )}
+        style={{
+          transform: isFlipped
+            ? 'rotateY(180deg)'
+            : `rotateY(${mousePos.x}deg) rotateX(${-mousePos.y}deg) translateZ(${isHovered ? 20 : 0}px)`,
+          transition: isFlipped ? 'transform 0.7s' : 'transform 0.1s ease-out',
+        }}
       >
         {/* Front side */}
         <div className="absolute inset-0 backface-hidden">
-          <div className="relative h-full glass rounded-xl overflow-hidden border border-border/50 group-hover:border-accent/30 transition-colors">
+          <div className="relative h-full glass rounded-xl overflow-hidden border border-border/50 group-hover:border-accent/50 transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(0,255,170,0.2)]">
+            {/* 3D Shine overlay */}
+            <div
+              className={cn(
+                "absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 transition-opacity duration-300 pointer-events-none z-20",
+                isHovered && "opacity-100"
+              )}
+              style={{
+                background: isHovered
+                  ? `radial-gradient(circle at ${50 + mousePos.x * 3}% ${50 + mousePos.y * 3}%, rgba(255,255,255,0.15) 0%, transparent 50%)`
+                  : undefined,
+              }}
+            />
             {/* Image */}
             <div className="relative h-48 overflow-hidden">
               <img
@@ -72,11 +115,17 @@ const ProjectCard: React.FC<{
                 alt={project.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              {/* Scan line effect */}
+              {/* Holographic scan line effect */}
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div
+                className={cn(
+                  "absolute inset-x-0 h-20 bg-gradient-to-b from-accent/20 to-transparent transition-all duration-700",
+                  isHovered ? "top-0 opacity-100" : "-top-20 opacity-0"
+                )}
+              />
               
-              {/* Category badge */}
-              <div className="absolute top-4 left-4 px-3 py-1 glass rounded-full text-xs font-medium text-accent">
+              {/* Category badge with glow */}
+              <div className="absolute top-4 left-4 px-3 py-1 glass rounded-full text-xs font-medium text-accent border border-accent/30 shadow-[0_0_10px_rgba(0,255,170,0.3)]">
                 {project.category}
               </div>
             </div>

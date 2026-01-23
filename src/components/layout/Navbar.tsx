@@ -36,9 +36,7 @@ const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="text-2xl font-bold gradient-text">
-          &lt;Jyoti Ranjan /&gt;
-        </a>
+        <a href="#home" className="text-2xl font-bold gradient-text">&lt;Jyoti Ranjan /&gt;</a>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">

@@ -13,20 +13,20 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'jyotiranjanpal777@gmail.com',
-    href: 'mailto:jyotiranjanpal777@gmail.com',
+  value: 'jyotiranjanpal777@gmail.com',
+  href: 'mailto:jyotiranjanpal777@gmail.com',
   },
   {
     icon: MapPin,
     label: 'Location',
-    value: 'Electronic City, Bengaluru, Karnataka',
-    href: 'https://maps.app.goo.gl/s31cyX5LDdX7wx9M8',
+  value: 'Electronic City, Bengaluru, Karnataka',
+  href: 'https://maps.app.goo.gl/s31cyX5LDdX7wx9M8',
   },
   {
     icon: Phone,
     label: 'Phone',
-    value: '+91 9348495372',
-    href: 'tel:+919348495372',
+  value: '+91 9348495372',
+  href: 'tel:+919348495372',
   },
 ];
 

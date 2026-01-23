@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Welcome to your Lovable project
 
 ## Project info
@@ -51,6 +52,8 @@ npm run dev
 - Edit files directly within the Codespace and commit and push your changes once you're done.
 
 ## What technologies are used for this project?
+=======
+>>>>>>> dce53243135ced50fac7f33f1d3a53057a106580
 
 This project is built with:
 
@@ -60,6 +63,7 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+<<<<<<< HEAD
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/035c029c-0f36-4438-8bb5-831b7d6dd6e0) and click on Share -> Publish.
@@ -71,3 +75,5 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+=======
+>>>>>>> dce53243135ced50fac7f33f1d3a53057a106580

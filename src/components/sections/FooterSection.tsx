@@ -13,7 +13,6 @@ const navLinks = [
 const socialLinks = [
   { icon: Github, href: 'https://github.com/jr777pal', label: 'GitHub' },
   { icon: Linkedin, href: 'https://www.linkedin.com/in/jyoti-ranjan-pal-994821385/', label: 'LinkedIn' },
- 
   { icon: Mail, href: 'mailto:jyotiranjanpal777@gmail.com', label: 'Email' },
 ];
 
@@ -29,9 +28,7 @@ const FooterSection: React.FC = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {/* Logo & description */}
           <div className="space-y-4">
-            <a href="#home" className="text-2xl font-bold gradient-text inline-block">
-              &lt;Jyoti Ranjan /&gt;
-            </a>
+            <a href="#home" className="text-2xl font-bold gradient-text inline-block">&lt;Jyoti Ranjan /&gt;</a>
             <p className="text-muted-foreground text-sm max-w-xs">
               Building beautiful, performant web experiences with modern technologies
               and a passion for clean code.
