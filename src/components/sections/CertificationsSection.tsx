@@ -27,11 +27,20 @@ const certifications: Certification[] = [
   {
     id: 2,
     title: 'Gemini Certified Educator',
-    issuer: 'google',
+    issuer: 'Google',
     date: 'Jan 2026',
     credentialUrl: 'https://edu.google.accredible.com/db53beba-094c-498e-9433-b73da8dd2766#acc.2fBQhSws',
-    skills: ['Gen AI', 'Prompt Engineering', 'Gemini', 'Education'],
-    logo: '🎓',}
+    skills: ['Gen AI',  'Gemini', 'Education'],
+    logo: '🎓',},
+     {
+    id: 3,
+    title: 'Gemini Certified Student',
+    issuer: 'Google',
+    date: 'Jan 2026',
+    credentialUrl: 'https://edu.google.accredible.com/b8650c43-f192-48b3-b5d4-e330d621b71f#acc.sWnFXT6Y',
+    skills: ['Gen AI',  'Gemini', 'Google AI'],
+    logo: '🧑‍🎓',},
+  
 ];
 
 const CertificationCard: React.FC<{ cert: Certification; index: number }> = ({ cert, index }) => {
