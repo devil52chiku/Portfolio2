@@ -15,8 +15,8 @@ const projects = [
     image: 'plantworld.png',
     tags: ['React', 'Node.js', 'PostgreSQL', 'Three.js'],
     stats: { users: '10K+', uptime: '99.9%', revenue: '$500K' },
-    demoUrl: '#',
-    githubUrl: '#',
+    demoUrl: 'https://plantworldindia.netlify.app/',
+    githubUrl: 'https://github.com/devil52chiku/plantworld.git',
   },
   {
     id: 2,
@@ -27,8 +27,8 @@ const projects = [
     image: '/petnest.png',
     tags: ['TypeScript', 'Node.js', 'PostgreSQL', 'Three.js'],
     stats: { users: '5K+', uptime: '99.5%', tasks: '1M+' },
-    demoUrl: '#',
-    githubUrl: '#',
+    demoUrl: 'https://petnestindia.netlify.app/',
+    githubUrl: 'https://github.com/devil52chiku/pet-nest-hub.git',
   },
   {
     id: 3,
@@ -39,8 +39,8 @@ const projects = [
     image: '/asus.png',
     tags: ['React', 'Three.js', 'Tailwind CSS', 'Vite'],
     stats: { users: '2K+', uptime: '99.8%', dataPoints: '50M' },
-    demoUrl: '#',
-    githubUrl: '#',
+    demoUrl: 'https://asusservice.netlify.app/',
+    githubUrl: 'https://github.com/devil52chiku/ASUS-Service.git',
   },
 ];
 
