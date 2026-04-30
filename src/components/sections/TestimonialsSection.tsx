@@ -75,7 +75,7 @@ const TestimonialsSection: React.FC = () => {
   };
 
   return (
-    <section 
+    <section id="testimonials"
       ref={ref}
       className="py-20 relative overflow-hidden"
     >
