@@ -95,8 +95,24 @@ const MatrixCodeRain: React.FC = () => {
   );
 };
 const allProjects = [
-  {
+  
+  
+ 
+ {
     id: 1,
+    title: 'Billing and Inventory Management System',
+    category: 'Full Stack Development',
+    description: 'A online and offline billing and inventory management system.',
+    longDescription: 'A comprehensive billing and inventory management system designed for small to medium-sized businesses. This application allows users to manage their inventory, generate bills, and track sales both online and offline. The system features a user-friendly interface, real-time inventory updates, and robust reporting tools to help businesses optimize their operations and improve customer service.',
+    image: '/billing.png',
+    tags: ['React', 'SQL','JWT', 'Three.js', 'Tailwind CSS', 'Vite'],
+    stats: { users: '2K+', uptime: '99.8%', dataPoints: '50M' },
+    demoUrl: 'https://luccabilling.vercel.app/',
+    githubUrl: '#',
+  },
+
+  {
+    id: 2,
     title: 'PetNest India',
     category: 'Full Stack',
     description: 'A modern e-commerce solution with real-time inventory, payment processing, and admin dashboard.',
@@ -106,7 +122,7 @@ const allProjects = [
     githubUrl: 'https://github.com/devil52chiku/pet-nest-hub.git',
   },
   {
-    id: 2,
+    id: 3,
     title: 'PlantWorld',
     category: 'Full Stack',
     description: 'An online plant store with dynamic product listings, user reviews, and a personalized shopping experience.',
@@ -116,7 +132,7 @@ const allProjects = [
     githubUrl: 'https://github.com/devil52chiku/plantworld.git',
   },
   {
-    id: 3,
+    id: 4,
     title: 'Asus Service Center',
     category: 'UI/UX',
     description: 'A sleek service center website for ASUS with interactive features and 3D product showcases.',
@@ -126,7 +142,7 @@ const allProjects = [
     githubUrl: 'https://github.com/jr777pal/ASUS.git',
   },
   {
-    id: 4,
+    id: 5,
     title: 'Calculator Pro',
     category: 'Web App',
     description: 'A feature-rich calculator app with scientific functions, history tracking, and a user-friendly interface.',
@@ -136,7 +152,7 @@ const allProjects = [
     githubUrl: 'https://github.com/jr777pal/Calculator-Pro',
   },
   {
-    id: 5,
+    id: 6,
     title: 'Teachers On Duty',
     category: 'Web App',
     description: 'A real time teacher booking for tution classes with interactive dashboard and analytics.',
@@ -146,7 +162,7 @@ const allProjects = [
     githubUrl: 'https://github.com/jr777pal/Teacher-s-On-Duty',
   },
   {
-    id: 6,
+    id: 7,
     title: 'Restraunt Menu',
     category: 'Frontend',
     description: 'A modern restaurant menu app with dynamic categories, item customization, and seamless ordering.',
@@ -155,6 +171,8 @@ const allProjects = [
     demoUrl: 'https://quickfoodz.netlify.app/',
     githubUrl: 'https://github.com/jr777pal/Quick-Foodz',
   },
+
+
 ];
 
 const categories = ['All', 'Full Stack', 'Frontend', 'Web App', 'UI/UX'];

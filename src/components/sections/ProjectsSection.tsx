@@ -32,16 +32,18 @@ const projects = [
   },
   {
     id: 3,
-    title: 'Asus Service Center',
-    category: 'UI/UX',
-    description: 'Live data visualization dashboard with customizable widgets and real-time updates.',
-    longDescription: 'WebSocket-powered dashboard delivering sub-second latency data visualization with interactive charts and exportable reports.',
-    image: '/asus.png',
-    tags: ['React', 'Three.js', 'Tailwind CSS', 'Vite'],
+    title: 'LoyalTech',
+    category: 'Full Stack Development',
+    description: 'A E-commerce Website fot buying, selling and repairing of electronic devices.',
+    longDescription: 'LoyalTech is a full-stack e-commerce and service platform designed for electronic devices, where users can buy, sell, and request repair services in a single ecosystem. The goal of the platform is to simplify device transactions and after-sales services by connecting customers, vendors, and administrators through a unified system.',
+    image: '/loyaltech.png',
+    tags: ['React', 'Django','AWS','PostgreSQL', 'Three.js', 'Tailwind CSS', 'Vite'],
     stats: { users: '2K+', uptime: '99.8%', dataPoints: '50M' },
-    demoUrl: 'https://asusservice.netlify.app/',
-    githubUrl: 'https://github.com/devil52chiku/ASUS-Service.git',
+    demoUrl: 'https://loyaltech.co.in',
+    githubUrl: '#',
   },
+
+
 ];
 
 const ProjectCard: React.FC<{
