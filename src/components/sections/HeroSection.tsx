@@ -87,7 +87,7 @@ const HeroSection: React.FC = () => {
               </Link>
               
               <a 
-                href="https://drive.google.com/uc?export=download&id=1s6ddEczrvMn6QSeaIPKovNsRiYSyqMvi"
+                href="https://drive.google.com/file/d/1o47qtnhW632zk8rC8q6ywcLZL-3cayWu/view?usp=sharing"
                 download
               >
                 <Button variant="outline" size="lg" className="gradient-border bg-background hover:bg-secondary/50 btn-glitch">
